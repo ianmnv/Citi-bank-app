@@ -1,7 +1,18 @@
+@import url("https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap");
+
 :root {
-  --color--primary: #90dbf4;
-  --color--second: #caf0f8;
-  --color-third: #378cb6;
+  --text--color: #212529;
+
+  --color--primary: #0f4c5c;
+  --color--second: #90dbf4;
+
+  --color--strong-1: #0c8599;
+  --color--strong-2: #1098ad;
+
+  --color--light-1: #f6fff8;
+  --color--light-2: #caf0f8;
+
+  --border-rad: 100px;
 }
 
 * {
@@ -12,45 +23,149 @@
 
 body {
   font-size: 62.5%;
+  font-family: "Montserrat", sans-serif;
+}
+
+/* GENERAL */
+.input-forms {
+  font-size: 1rem;
+  padding: 0.5rem;
+  border: none;
+  border-radius: var(--border-rad);
 }
 
 /* HEADER */
 header {
   display: flex;
   justify-content: center;
-  gap: 4rem;
-  padding: 1rem;
+  gap: 10rem;
+  padding: 2rem;
   background: linear-gradient(
     to left,
+    var(--color--light-1),
+    var(--color--light-2),
     var(--color--second),
-    var(--color--primary),
-    var(--color-third)
+    var(--color--primary)
   );
+}
+
+#header-title {
+  font-size: 4rem;
+  color: var(--text--color);
+}
+
+#header-icon {
+  height: 3rem;
+  width: 3rem;
 }
 
 #header-cont {
   display: flex;
   align-items: center;
+  gap: 1rem;
 }
 
 #header-form {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  width: 43rem;
 }
 
-#header-icon {
-  height: 2rem;
-  width: 2rem;
+#header-label {
+  font-size: 2rem;
+  text-decoration: underline;
+  grid-column: 1 / -1;
 }
 
-/* MAIN */
-.main-imgs {
-  height: 30rem;
-  width: 30rem;
+.header-icon-f {
+  height: 1.8rem;
+  width: 1.8rem;
+}
+
+.header-signin-btn {
+  padding: 10px 30px;
+  margin-left: 1rem;
+  border-radius: 20px;
 }
 
 /* HOME OUT */
-
 #homeout-cont {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 5rem;
+
+  /* background-color: #0f4c5c; */
+
+  padding: 1rem 0;
+}
+
+.homeout-img {
+  height: 30rem;
+  width: 30rem;
+
+  border: solid 1px var(--text--color);
+  border-radius: var(--border-rad);
+}
+
+#homeout-text {
+  display: flex;
+  align-items: center;
+  gap: 2rem;
+  color: var(--text--color);
+}
+
+#homeout-inner-txt {
+  width: 25rem;
+}
+
+#homeout-inner-txt h1 {
+  font-size: 4rem;
+}
+
+#homeout-p {
+  font-size: 1.2rem;
+  font-weight: 500;
+  line-height: 1.5rem;
 }
 
 #homeout-form {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+  width: 20rem;
+}
+
+.homeout-inner-cont {
+  display: flex;
+  flex-direction: column;
+}
+
+.homeout-labels {
+  font-size: 1.9rem;
+  color: var(--text--color);
+}
+
+.homeout-inp {
+  border: solid 1px var(--text--color);
+}
+
+.homeout-btn {
+  font-size: 1.5rem;
+  margin-top: 1.5rem;
+  padding: 1rem;
+  border-radius: var(--border-rad);
+}
+
+.sign-in-out {
+  font-weight: 700;
+  background-color: var(--color--strong-1);
+  color: #fff;
+  border: none;
+  cursor: pointer;
+}
+
+.sign-in-out:hover {
+  background-color: var(--color--strong-2);
 }
