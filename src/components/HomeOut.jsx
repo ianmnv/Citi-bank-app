@@ -7,22 +7,30 @@ import projection from "../imgs/projection.png";
 
 function HomeOut() {
   const initialValues = {
-    firstName: "",
-    lastName: "",
+    username: "",
+    fullName: "",
     email: "",
+    password: "",
+    gender: "male",
     card: "student",
   };
 
   function reducerCallback(draft, action) {
     switch (action.type) {
-      case "firstName":
-        draft.firstName = action.value;
+      case "username":
+        draft.username = action.value;
         break;
-      case "lastName":
-        draft.lastName = action.value;
+      case "fullName":
+        draft.fullName = action.value;
         break;
       case "email":
         draft.email = action.value;
+        break;
+      case "password":
+        draft.password = action.value;
+        break;
+      case "gender":
+        draft.gender = action.value;
         break;
       case "card":
         draft.card = action.value;
@@ -32,9 +40,18 @@ function HomeOut() {
 
   const [state, dispatch] = useImmerReducer(reducerCallback, initialValues);
 
-  function handlerForm(e) {
+  async function handlerForm(e) {
     e.preventDefault();
-    console.log(state);
+
+    try {
+      const response = await Axios.post(
+        "http://localhost:8080/register",
+        state
+      );
+      console.log(response);
+    } catch (e) {
+      console.error(e);
+    }
   }
 
   return (
@@ -45,49 +62,58 @@ function HomeOut() {
           <div id="homeout-inner-txt">
             <h1>Sign up today!</h1>
             <p id="homeout-p">
-              Singing up with us have never been so easy!
+              By singin up with us you'll have access to many advantages in our
+              products, services and cards! After singing up take a minute or 2
+              to really read all the benefits that our debit and cards provide
+              to you.
               <br />
-              Lorem ipsum dolor sit amet, consectetur adipisicing elit.
-              Cupiditate delectus dolore asperiores sapiente molestiae harum
-              voluptates, fugit, quas repellat nisi dolorum odio! Doloribus
-              deleniti explicabo nihil vel rem unde sunt. Lorem, ipsum dolor sit
-              amet consectetur adipisicing elit. Nihil itaque iste ipsum tempora
-              qui enim exercitationem temporibus ut ex, laudantium, ullam
-              doloribus error eos rem reprehenderit facere quia inventore
-              deleniti!
+              Citi Bank is a brand new bank that will help you grow and
+              understand your money, our advisors will happily help you with
+              your everyday needs. And even though our bank is new, this doesn't
+              mean we don't know what we are doing, all our staff have a lot of
+              experience working in finance, economics and many more important
+              work, we have brought very experienced and proffesional personal
+              that you won't regret our services and products, we're proud of
+              who we are and we are sure you will love it too.
+              <br />
+              <br />
+              Hope to see you soon!
+              <br />
+              -Citi Bank CEO.
             </p>
           </div>
         </div>
 
-        <form action="" id="homeout-form" onSubmit={handlerForm}>
+        <form action="" id="homeout-form" name="signup" onSubmit={handlerForm}>
           <div className="homeout-inner-cont">
-            <label className="homeout-labels" htmlFor="firstName">
-              First Name:
+            <label className="homeout-labels" htmlFor="signup-username">
+              User name:
             </label>
             <input
               onChange={(e) =>
-                dispatch({ type: "firstName", value: e.target.value })
+                dispatch({ type: "username", value: e.target.value })
               }
-              placeholder="First Name"
+              placeholder="Username"
               className="homeout-inp input-forms"
               type="text"
-              name="firstName"
-              id="firstName"
+              name="signup-username"
+              id="signup-username"
             />
           </div>
 
           <div className="homeout-inner-cont">
-            <label className="homeout-labels" htmlFor="lastName">
-              Last Name:
+            <label className="homeout-labels" htmlFor="signup-fullName">
+              Full name:
             </label>
             <input
               onChange={(e) =>
-                dispatch({ type: "lastName", value: e.target.value })
+                dispatch({ type: "fullName", value: e.target.value })
               }
-              placeholder="Last Name"
+              placeholder="Full name"
               className="homeout-inp input-forms"
               type="text"
-              id="lastName"
+              name="signup-fullName"
+              id="signup-fullName"
             />
           </div>
 
@@ -105,6 +131,55 @@ function HomeOut() {
               name="email"
               id="email"
             />
+          </div>
+
+          <div className="homeout-inner-cont">
+            <label className="homeout-labels" htmlFor="signup-password">
+              Password:
+            </label>
+            <input
+              onChange={(e) =>
+                dispatch({ type: "password", value: e.target.value })
+              }
+              placeholder="Password"
+              className="homeout-inp input-forms"
+              type="password"
+              name="signup-password"
+              id="signup-password"
+            />
+          </div>
+
+          <div className="homeout-inner-cont">
+            <label className="homeout-labels" htmlFor="gender">
+              Gender:
+            </label>
+
+            <div id="homeout-gen-cont">
+              <label className="input-forms">
+                <input
+                  onChange={(e) =>
+                    dispatch({ type: "gender", value: e.target.value })
+                  }
+                  type="radio"
+                  name="gender"
+                  id="gender"
+                  value="male"
+                />{" "}
+                Male
+              </label>
+
+              <label className="input-forms">
+                <input
+                  onChange={(e) =>
+                    dispatch({ type: "gender", value: e.target.value })
+                  }
+                  type="radio"
+                  name="gender"
+                  value="female"
+                />{" "}
+                Female
+              </label>
+            </div>
           </div>
 
           <div className="homeout-inner-cont">

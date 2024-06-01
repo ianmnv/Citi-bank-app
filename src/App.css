@@ -93,12 +93,9 @@ header {
 #homeout-cont {
   display: flex;
   align-items: center;
-  justify-content: center;
+  justify-content: space-evenly;
   gap: 5rem;
-
-  /* background-color: #0f4c5c; */
-
-  padding: 1rem 0;
+  padding: 5rem 0;
 }
 
 .homeout-img {
@@ -117,17 +114,18 @@ header {
 }
 
 #homeout-inner-txt {
-  width: 25rem;
+  width: 37rem;
 }
 
 #homeout-inner-txt h1 {
   font-size: 4rem;
+  margin-bottom: 2rem;
 }
 
 #homeout-p {
   font-size: 1.2rem;
   font-weight: 500;
-  line-height: 1.5rem;
+  line-height: 1.4;
 }
 
 #homeout-form {
@@ -145,6 +143,10 @@ header {
 .homeout-labels {
   font-size: 1.9rem;
   color: var(--text--color);
+}
+
+#homeout-gen-cont {
+  padding: 0.5rem;
 }
 
 .homeout-inp {
