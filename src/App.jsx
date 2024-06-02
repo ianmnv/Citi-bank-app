@@ -4,8 +4,7 @@ import Header from "./components/Header";
 import HomeOut from "./components/HomeOut";
 import HomeIn from "./components/HomeIn";
 
-import StateContext from "./context/StateContext";
-import DispatchContext from "./context/DispatchContext";
+import FullContext from "./FullContext";
 
 import { useImmerReducer } from "use-immer";
 import React, { useState } from "react";
@@ -53,25 +52,14 @@ function App() {
   );
 
   return (
-    <StateContext.Provider value={state}>
-      <DispatchContext.Provider value={dispatch}>
-        <BrowserRouter>
-          <Header />
-          <Routes>
-            <Route
-              path="/"
-              element={
-                loggedIn ? (
-                  <HomeIn setLogIn={setLogIn} />
-                ) : (
-                  <HomeOut setLogIn={setLogIn} />
-                )
-              }
-            />
-          </Routes>
-        </BrowserRouter>
-      </DispatchContext.Provider>
-    </StateContext.Provider>
+    <FullContext.Provider value={{ loggedIn, setLogIn, state, dispatch }}>
+      <BrowserRouter>
+        <Header />
+        <Routes>
+          <Route path="/" element={loggedIn ? <HomeIn /> : <HomeOut />} />
+        </Routes>
+      </BrowserRouter>
+    </FullContext.Provider>
   );
 }
 

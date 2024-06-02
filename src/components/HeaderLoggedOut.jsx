@@ -1,9 +1,37 @@
-import React from "react";
+import React, { useState, useContext } from "react";
+import Axios from "axios";
+
+import FullContext from "../FullContext";
 
 function HeaderLoggedOut() {
+  const [username, setUsername] = useState("");
+  const [password, setPass] = useState("");
+
+  const { setLogIn } = useContext(FullContext);
+
+  async function submitHandler(e) {
+    e.preventDefault();
+    try {
+      if (username != "" || password != "") {
+        const response = await Axios.post("/login", { username, password });
+        if (response.data === false) {
+          alert("Something went wrong, please try again");
+          return;
+        }
+        localStorage.setItem("BankToken", response.data.token);
+        localStorage.setItem("BankUsername", response.data.username);
+        setLogIn(true);
+      } else {
+        alert("Please fill the inputs");
+      }
+    } catch (e) {
+      console.error(e);
+    }
+  }
+
   return (
     <>
-      <form action="" id="header-form" name="signin">
+      <form onSubmit={submitHandler} action="" id="header-form" name="signin">
         <label htmlFor="singin-firstName">
           <svg
             xmlns="http://www.w3.org/2000/svg"
@@ -21,6 +49,7 @@ function HeaderLoggedOut() {
           </svg>
         </label>
         <input
+          onChange={(e) => setUsername(e.target.value)}
           className="input-forms"
           type="text"
           placeholder="First name"
@@ -45,6 +74,7 @@ function HeaderLoggedOut() {
           </svg>
         </label>
         <input
+          onChange={(e) => setPass(e.target.value)}
           className="input-forms"
           type="password"
           placeholder="password"

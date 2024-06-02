@@ -4,12 +4,10 @@ import Axios from "axios";
 import Page from "./Page";
 import projection from "../imgs/projection.png";
 
-import StateContext from "../context/StateContext";
-import DispatchContext from "../context/DispatchContext";
+import FullContext from "../FullContext";
 
-function HomeOut(props) {
-  const state = useContext(StateContext);
-  const dispatch = useContext(DispatchContext);
+function HomeOut() {
+  const { setLogIn, state, dispatch } = useContext(FullContext);
 
   async function handlerForm(e) {
     e.preventDefault();
@@ -19,7 +17,7 @@ function HomeOut(props) {
       console.log(response);
       localStorage.setItem("BankToken", response.data.token);
       localStorage.setItem("BankUsername", response.data.username);
-      props.setLogIn(true);
+      setLogIn(true);
     } catch (e) {
       console.error(e);
     }
