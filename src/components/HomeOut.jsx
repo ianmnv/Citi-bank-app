@@ -44,11 +44,10 @@ function HomeOut() {
     e.preventDefault();
 
     try {
-      const response = await Axios.post(
-        "http://localhost:8080/register",
-        state
-      );
+      const response = await Axios.post("/register", state);
       console.log(response);
+      localStorage.setItem("BankToken", response.data.token);
+      localStorage.setItem("BankUsername", response.data.username);
     } catch (e) {
       console.error(e);
     }
