@@ -39,7 +39,7 @@ function HeaderLoggedOut() {
             viewBox="0 0 24 24"
             strokeWidth="1.5"
             stroke="currentColor"
-            className="header-icon-f"
+            className="header-icon-out"
           >
             <path
               strokeLinecap="round"
@@ -64,7 +64,7 @@ function HeaderLoggedOut() {
             viewBox="0 0 24 24"
             strokeWidth={1.5}
             stroke="currentColor"
-            className="header-icon-f"
+            className="header-icon-out"
           >
             <path
               strokeLinecap="round"
@@ -77,13 +77,27 @@ function HeaderLoggedOut() {
           onChange={(e) => setPass(e.target.value)}
           className="input-forms"
           type="password"
-          placeholder="password"
+          placeholder="Password"
           id="singin-password"
           name="singin-password"
         />
 
-        <button className="input-forms sign-in-out header-signin-btn">
-          Sign In
+        <button className="input-forms sign-in-out header-sign-btn">
+          <svg
+            xmlns="http://www.w3.org/2000/svg"
+            fill="none"
+            viewBox="0 0 24 24"
+            strokeWidth={1.5}
+            stroke="currentColor"
+            className="header-sign-icons"
+          >
+            <path
+              strokeLinecap="round"
+              strokeLinejoin="round"
+              d="M15.75 9V5.25A2.25 2.25 0 0 0 13.5 3h-6a2.25 2.25 0 0 0-2.25 2.25v13.5A2.25 2.25 0 0 0 7.5 21h6a2.25 2.25 0 0 0 2.25-2.25V15m3 0 3-3m0 0-3-3m3 3H9"
+            />
+          </svg>
+          <span>Sign In</span>
         </button>
       </form>
     </>

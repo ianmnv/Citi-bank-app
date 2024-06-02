@@ -80,15 +80,29 @@ header {
   grid-column: 1 / -1;
 }
 
-.header-icon-f {
-  height: 1.8rem;
-  width: 1.8rem;
-}
-
-.header-signin-btn {
+.header-sign-btn {
   padding: 10px 30px;
   margin-left: 1rem;
-  border-radius: 20px;
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.header-sign-icons {
+  height: 1.5rem;
+  width: 1.5rem;
+}
+
+.sign-in-out {
+  font-weight: 700;
+  background-color: var(--color--strong-1);
+  color: #fff;
+  border: none;
+  cursor: pointer;
+}
+
+.sign-in-out:hover {
+  background-color: var(--color--strong-2);
 }
 
 /* HOME OUT */
@@ -163,14 +177,14 @@ header {
   border-radius: var(--border-rad);
 }
 
-.sign-in-out {
-  font-weight: 700;
-  background-color: var(--color--strong-1);
-  color: #fff;
-  border: none;
-  cursor: pointer;
+/* HOME IN */
+#header-in-cont {
+  display: flex;
+  align-items: center;
 }
 
-.sign-in-out:hover {
-  background-color: var(--color--strong-2);
+.header-loggedin-avatar {
+  height: 3.6rem;
+  width: 3.8rem;
+  border-radius: var(--border-rad);
 }

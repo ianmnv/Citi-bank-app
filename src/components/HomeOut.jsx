@@ -169,9 +169,7 @@ function HomeOut() {
             </select>
           </div>
 
-          <button className="homeout-inp homeout-btn sign-in-out">
-            SIGN UP
-          </button>
+          <button className="homeout-btn sign-in-out">SIGN UP</button>
         </form>
       </div>
     </Page>
