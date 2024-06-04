@@ -9,8 +9,6 @@ import FullContext from "./FullContext";
 import { useImmerReducer } from "use-immer";
 import React, { useState } from "react";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
-import Axios from "axios";
-Axios.defaults.baseURL = "http://localhost:8080";
 
 function App() {
   const initialValues = {

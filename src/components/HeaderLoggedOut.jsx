@@ -1,5 +1,4 @@
 import React, { useState, useContext } from "react";
-import Axios from "axios";
 
 import FullContext from "../FullContext";
 
@@ -11,22 +10,6 @@ function HeaderLoggedOut() {
 
   async function submitHandler(e) {
     e.preventDefault();
-    try {
-      if (username != "" || password != "") {
-        const response = await Axios.post("/login", { username, password });
-        if (response.data === false) {
-          alert("Something went wrong, please try again");
-          return;
-        }
-        localStorage.setItem("BankToken", response.data.token);
-        localStorage.setItem("BankUsername", response.data.username);
-        setLogIn(true);
-      } else {
-        alert("Please fill the inputs");
-      }
-    } catch (e) {
-      console.error(e);
-    }
   }
 
   return (

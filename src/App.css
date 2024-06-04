@@ -37,7 +37,7 @@ body {
 /* HEADER */
 header {
   display: flex;
-  justify-content: center;
+  justify-content: space-between;
   gap: 10rem;
   padding: 2rem;
   background: linear-gradient(
@@ -54,6 +54,7 @@ header {
   font-weight: 500;
   text-decoration: none;
   color: var(--text--color);
+  margin-left: 9rem;
 }
 
 #header-icon {
@@ -71,13 +72,18 @@ header {
   display: flex;
   align-items: center;
   gap: 0.5rem;
-  width: 43rem;
+  width: 45rem;
 }
 
 #header-label {
   font-size: 2rem;
   text-decoration: underline;
   grid-column: 1 / -1;
+}
+
+.header-icon-out {
+  height: 2rem;
+  width: 2rem;
 }
 
 .header-sign-btn {
@@ -181,10 +187,26 @@ header {
 #header-in-cont {
   display: flex;
   align-items: center;
+  gap: 0.5rem;
+  font-size: 1.5rem;
+  width: 30rem;
 }
 
 .header-loggedin-avatar {
   height: 3.6rem;
   width: 3.8rem;
   border-radius: var(--border-rad);
+}
+
+.header-in {
+  padding: 0.4rem;
+  margin-left: 0.5rem;
+  border: none;
+  cursor: pointer;
+  border-radius: var(--border-rad);
+  background-color: #fff;
+}
+
+.header-in:hover {
+  background-color: var(--color--light-1);
 }

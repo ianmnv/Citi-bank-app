@@ -1,5 +1,4 @@
 import React, { useContext } from "react";
-import Axios from "axios";
 
 import Page from "./Page";
 import projection from "../imgs/projection.png";
@@ -11,16 +10,6 @@ function HomeOut() {
 
   async function handlerForm(e) {
     e.preventDefault();
-
-    try {
-      const response = await Axios.post("/register", state);
-      console.log(response);
-      localStorage.setItem("BankToken", response.data.token);
-      localStorage.setItem("BankUsername", response.data.username);
-      setLogIn(true);
-    } catch (e) {
-      console.error(e);
-    }
   }
 
   return (
