@@ -7,12 +7,11 @@ import femAvatar from "../imgs/fem-avatar.png";
 import FullContext from "../FullContext";
 
 function HeaderLoggedIn() {
-  const { setLogIn, state } = useContext(FullContext);
+  const { setLoggedIn, currentUser } = useContext(FullContext);
 
   function signoutBtn() {
-    localStorage.removeItem("BankUsername");
-    localStorage.removeItem("BankToken");
-    setLogIn(false);
+    setLoggedIn(false);
+    localStorage.removeItem("userData");
   }
 
   function changeIcon(e, d) {
@@ -24,12 +23,11 @@ function HeaderLoggedIn() {
   }
 
   function displayTitle() {
-    const splitName = state.fullName.split("");
-    console.log(state, splitName);
+    const splitName = currentUser.fullName.split(" ");
 
     let gender;
-    if (state.gender === "male") gender = "Mr.";
-    if (state.gender === "female") gender = "Mrs.";
+    if (currentUser.gender === "male") gender = "Mr.";
+    if (currentUser.gender === "female") gender = "Mrs.";
 
     return `Hello ${gender} ${splitName[0]}`;
   }

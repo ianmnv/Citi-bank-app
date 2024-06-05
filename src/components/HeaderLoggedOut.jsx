@@ -3,19 +3,26 @@ import React, { useState, useContext } from "react";
 import FullContext from "../FullContext";
 
 function HeaderLoggedOut() {
-  const [username, setUsername] = useState("");
+  const [username, setUserName] = useState("");
   const [password, setPass] = useState("");
 
-  const { setLogIn } = useContext(FullContext);
+  const { setLoggedIn, accounts } = useContext(FullContext);
 
-  async function submitHandler(e) {
+  function submitHandler(e) {
     e.preventDefault();
+
+    const user = accounts.find((account) => username === account.username);
+
+    if (user && password === user.password) {
+      setLoggedIn(true);
+      localStorage.setItem("userData", JSON.stringify(user));
+    }
   }
 
   return (
     <>
       <form onSubmit={submitHandler} action="" id="header-form" name="signin">
-        <label htmlFor="singin-firstName">
+        <label htmlFor="singin-userName">
           <svg
             xmlns="http://www.w3.org/2000/svg"
             fill="none"
@@ -32,12 +39,12 @@ function HeaderLoggedOut() {
           </svg>
         </label>
         <input
-          onChange={(e) => setUsername(e.target.value)}
+          onChange={(e) => setUserName(e.target.value)}
           className="input-forms"
           type="text"
-          placeholder="First name"
-          id="singin-firstName"
-          name="singin-firstName"
+          placeholder="Username"
+          id="singin-userName"
+          name="singin-userName"
         />
 
         <label htmlFor="singin-password">
@@ -45,7 +52,7 @@ function HeaderLoggedOut() {
             xmlns="http://www.w3.org/2000/svg"
             fill="none"
             viewBox="0 0 24 24"
-            strokeWidth={1.5}
+            strokeWidth="1.5"
             stroke="currentColor"
             className="header-icon-out"
           >

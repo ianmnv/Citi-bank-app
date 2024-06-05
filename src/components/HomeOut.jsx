@@ -6,10 +6,14 @@ import projection from "../imgs/projection.png";
 import FullContext from "../FullContext";
 
 function HomeOut() {
-  const { setLogIn, state, dispatch } = useContext(FullContext);
+  const { setLoggedIn, state, dispatch, accounts } = useContext(FullContext);
 
-  async function handlerForm(e) {
+  function handlerForm(e) {
     e.preventDefault();
+
+    setLoggedIn(true);
+    accounts.push(state);
+    localStorage.setItem("userData", JSON.stringify(state));
   }
 
   return (
@@ -45,7 +49,7 @@ function HomeOut() {
         <form action="" id="homeout-form" name="signup" onSubmit={handlerForm}>
           <div className="homeout-inner-cont">
             <label className="homeout-labels" htmlFor="signup-username">
-              User name:
+              Username:
             </label>
             <input
               onChange={(e) =>

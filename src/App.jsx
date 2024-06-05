@@ -11,6 +11,39 @@ import React, { useState } from "react";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 
 function App() {
+  const accounts = [
+    {
+      username: "ianmng",
+      fullName: "Ian Nava",
+      email: "ianmng@gmail.com",
+      password: "mybankpass",
+      gender: "male",
+      card: "student",
+      creditCard: "",
+      movements: [920, 9000, 20000, -5000, -100, 10000, -450, -3400],
+    },
+    {
+      username: "john117",
+      fullName: "John Smith",
+      email: "john117@gmail.com",
+      password: "masterchiefpass",
+      gender: "male",
+      card: "saving",
+      creditCard: "",
+      movements: [5000, -2000, 1000, 599, -355, 9000, -500, -210],
+    },
+    {
+      username: "meganfox",
+      fullName: "Megan Fox",
+      email: "foxyM@gmail.com",
+      password: "meganfoxpass",
+      gender: "female",
+      card: "checking",
+      creditCard: "",
+      movements: [20000, 4000, -2500, -6000, 1200, -899, -300, -890, 2000],
+    },
+  ];
+
   const initialValues = {
     username: "",
     fullName: "",
@@ -18,6 +51,8 @@ function App() {
     password: "",
     gender: "male",
     card: "student",
+    creditCard: "",
+    movements: [],
   };
 
   function reducerCallback(draft, action) {
@@ -40,19 +75,35 @@ function App() {
       case "card":
         draft.card = action.value;
         break;
+      case "creditCard":
+        draft.card = action.value;
+        break;
+      case "movements":
+        draft.movements = draft.movements.push(action.value);
+        break;
     }
   }
 
   const [state, dispatch] = useImmerReducer(reducerCallback, initialValues);
 
-  const [loggedIn, setLogIn] = useState(
-    Boolean(localStorage.getItem("BankToken"))
+  const [loggedIn, setLoggedIn] = useState(
+    Boolean(localStorage.getItem("userData"))
   );
 
+  let currentUser;
+
+  if (loggedIn) {
+    const user = JSON.parse(localStorage.getItem("userData"));
+    currentUser = user;
+  }
+
   return (
-    <FullContext.Provider value={{ loggedIn, setLogIn, state, dispatch }}>
+    <FullContext.Provider
+      value={{ loggedIn, setLoggedIn, state, dispatch, accounts, currentUser }}
+    >
       <BrowserRouter>
         <Header />
+
         <Routes>
           <Route path="/" element={loggedIn ? <HomeIn /> : <HomeOut />} />
         </Routes>

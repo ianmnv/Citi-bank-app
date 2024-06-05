@@ -5,22 +5,11 @@ import Page from "./Page";
 import FullContext from "../FullContext";
 
 function HomeIn() {
-  const { setLogIn } = useContext(FullContext);
-
-  async function getUserData() {
-    try {
-      localStorage.removeItem("BankToken");
-      localStorage.removeItem("BankUsername");
-      setLogIn(false);
-    } catch (e) {
-      console.error(e);
-    }
-  }
+  // const { setLogIn } = useContext(FullContext);
 
   return (
     <Page title="Home">
-      <p>Welcome!</p>
-      <button onClick={getUserData}>Get data</button>
+      <p>Welcome to Home!</p>
     </Page>
   );
 }
