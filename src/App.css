@@ -24,6 +24,7 @@
 body {
   font-size: 62.5%;
   font-family: "Montserrat", sans-serif;
+  color: var(--text--color);
 }
 
 /* GENERAL */
@@ -132,7 +133,6 @@ header {
   display: flex;
   align-items: center;
   gap: 2rem;
-  color: var(--text--color);
 }
 
 #homeout-inner-txt {
@@ -165,7 +165,6 @@ header {
 
 .homeout-labels {
   font-size: 1.9rem;
-  color: var(--text--color);
 }
 
 #homeout-gen-cont {
@@ -188,8 +187,7 @@ header {
   display: flex;
   align-items: center;
   gap: 0.5rem;
-  font-size: 1.5rem;
-  width: 30rem;
+  font-size: 1.3rem;
 }
 
 .header-loggedin-avatar {
@@ -209,4 +207,45 @@ header {
 
 .header-in:hover {
   background-color: var(--color--light-1);
+}
+
+.homein-link-cont {
+  display: flex;
+  justify-content: center;
+  gap: 1.5rem;
+  font-size: 1.2rem;
+  padding: 1rem 0;
+  margin: 0 10rem 5rem;
+  border-bottom: solid 2px var(--color--primary);
+}
+
+.homein-link {
+  color: var(--color--primary);
+  font-weight: 500;
+  text-decoration: none;
+}
+
+.homein-link:hover {
+  color: var(--color--strong-1);
+}
+
+.homein-cont {
+  display: flex;
+  justify-content: center;
+}
+
+.homein-h1 {
+  font-size: 3rem;
+  font-weight: 400;
+}
+
+.homein-p {
+  font-size: 1.5rem;
+  font-weight: 300;
+  padding: 1rem;
+}
+
+.homein-h2 {
+  font-size: 2rem;
+  font-weight: 400;
 }

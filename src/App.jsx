@@ -3,6 +3,8 @@ import "./App.css";
 import Header from "./components/Header";
 import HomeOut from "./components/HomeOut";
 import HomeIn from "./components/HomeIn";
+import HomeLinks from "./components/HomeLinks";
+import Personal from "./components/Personal";
 
 import FullContext from "./FullContext";
 
@@ -104,8 +106,10 @@ function App() {
       <BrowserRouter>
         <Header />
 
+        {loggedIn ? <HomeLinks /> : ""}
         <Routes>
           <Route path="/" element={loggedIn ? <HomeIn /> : <HomeOut />} />
+          <Route path="/personal" element={<Personal />} />
         </Routes>
       </BrowserRouter>
     </FullContext.Provider>

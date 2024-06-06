@@ -8,6 +8,7 @@ import FullContext from "../FullContext";
 
 function HeaderLoggedIn() {
   const { setLoggedIn, currentUser } = useContext(FullContext);
+  let gender;
 
   function signoutBtn() {
     setLoggedIn(false);
@@ -25,7 +26,6 @@ function HeaderLoggedIn() {
   function displayTitle() {
     const splitName = currentUser.fullName.split(" ");
 
-    let gender;
     if (currentUser.gender === "male") gender = "Mr.";
     if (currentUser.gender === "female") gender = "Mrs.";
 
@@ -34,8 +34,12 @@ function HeaderLoggedIn() {
 
   return (
     <div id="header-in-cont">
-      <Link to="/profile" style={{ display: "flex", alignItems: "center" }}>
-        <img src={femAvatar} alt="avatar" className="header-loggedin-avatar" />
+      <Link to="/personal" style={{ display: "flex", alignItems: "center" }}>
+        <img
+          src={currentUser.gender === "male" ? maleAvatar : femAvatar}
+          alt="avatar"
+          className="header-loggedin-avatar"
+        />
       </Link>
       <span>{displayTitle()}</span>
 
