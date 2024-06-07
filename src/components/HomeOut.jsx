@@ -20,7 +20,7 @@ function HomeOut() {
     <Page title="Home guest">
       <div id="homeout-cont">
         <div id="homeout-text">
-          <img src={projection} alt="home-icon" className="homeout-img" />
+          <img src={projection} alt="home-icon" className="home-imgs" />
           <div id="homeout-inner-txt">
             <h1>Sign up today!</h1>
             <p id="homeout-p">
@@ -56,7 +56,7 @@ function HomeOut() {
                 dispatch({ type: "username", value: e.target.value })
               }
               placeholder="Username"
-              className="homeout-inp input-forms"
+              className="border-inp input-forms"
               type="text"
               name="signup-username"
               id="signup-username"
@@ -72,7 +72,7 @@ function HomeOut() {
                 dispatch({ type: "fullName", value: e.target.value })
               }
               placeholder="Full name"
-              className="homeout-inp input-forms"
+              className="border-inp input-forms"
               type="text"
               name="signup-fullName"
               id="signup-fullName"
@@ -88,7 +88,7 @@ function HomeOut() {
                 dispatch({ type: "email", value: e.target.value })
               }
               placeholder="Email"
-              className="homeout-inp input-forms"
+              className="border-inp input-forms"
               type="text"
               name="email"
               id="email"
@@ -104,7 +104,7 @@ function HomeOut() {
                 dispatch({ type: "password", value: e.target.value })
               }
               placeholder="Password"
-              className="homeout-inp input-forms"
+              className="border-inp input-forms"
               type="password"
               name="signup-password"
               id="signup-password"
@@ -152,7 +152,7 @@ function HomeOut() {
               onChange={(e) =>
                 dispatch({ type: "card", value: e.target.value })
               }
-              className="homeout-inp input-forms"
+              className="border-inp input-forms"
               name="cardType"
               id="cardType"
             >

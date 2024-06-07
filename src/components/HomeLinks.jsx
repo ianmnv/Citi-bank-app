@@ -24,15 +24,6 @@ function HomeLinks() {
       <Link to="/invest" className="homein-link">
         Invest
       </Link>
-      <Link to="/contact" className="homein-link">
-        Contact
-      </Link>
-      <Link to="/terms&conditions" className="homein-link">
-        Terms & Cond.
-      </Link>
-      <Link to="/aboutus" className="homein-link">
-        About us
-      </Link>
     </Page>
   );
 }

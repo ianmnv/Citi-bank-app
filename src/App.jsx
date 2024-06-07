@@ -5,6 +5,10 @@ import HomeOut from "./components/HomeOut";
 import HomeIn from "./components/HomeIn";
 import HomeLinks from "./components/HomeLinks";
 import Personal from "./components/Personal";
+import Footer from "./components/Footer";
+import Contact from "./components/Contact";
+import Terms from "./components/Terms";
+import About from "./components/About";
 
 import FullContext from "./FullContext";
 
@@ -110,7 +114,12 @@ function App() {
         <Routes>
           <Route path="/" element={loggedIn ? <HomeIn /> : <HomeOut />} />
           <Route path="/personal" element={<Personal />} />
+
+          <Route path="/contact" element={<Contact />} />
+          <Route path="/about" element={<About />} />
+          <Route path="/terms&conditions" element={<Terms />} />
         </Routes>
+        {loggedIn ? <Footer /> : ""}
       </BrowserRouter>
     </FullContext.Provider>
   );

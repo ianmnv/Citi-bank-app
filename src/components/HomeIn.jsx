@@ -1,10 +1,13 @@
 import React from "react";
 
+import businessman from "../imgs/businessman.png";
+
 import Page from "./Page";
 
 function HomeIn() {
   return (
     <Page title="Home" className="homein-cont">
+      <img src={businessman} alt="businessman" className="home-imgs" />
       <div>
         <h1 className="homein-h1">Welcome to Citi Bank</h1>
         <p className="homein-p">
