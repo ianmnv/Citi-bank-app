@@ -111,15 +111,16 @@ function App() {
         <Header />
 
         {loggedIn ? <HomeLinks /> : ""}
+
         <Routes>
           <Route path="/" element={loggedIn ? <HomeIn /> : <HomeOut />} />
           <Route path="/personal" element={<Personal />} />
-
           <Route path="/contact" element={<Contact />} />
           <Route path="/about" element={<About />} />
           <Route path="/terms&conditions" element={<Terms />} />
         </Routes>
-        {loggedIn ? <Footer /> : ""}
+
+        <Footer />
       </BrowserRouter>
     </FullContext.Provider>
   );

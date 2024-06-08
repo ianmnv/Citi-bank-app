@@ -6,6 +6,9 @@ import Page from "./Page";
 function Footer() {
   return (
     <Page className="footer-cont">
+      <Link to="/" className="footer-links">
+        Home
+      </Link>
       <Link to="/contact" className="footer-links">
         Contact
       </Link>

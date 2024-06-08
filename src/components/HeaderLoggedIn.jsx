@@ -1,5 +1,6 @@
 import React, { useContext } from "react";
 import { Link } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 
 import maleAvatar from "../imgs/male-avatar.png";
 import femAvatar from "../imgs/fem-avatar.png";
@@ -8,11 +9,12 @@ import FullContext from "../FullContext";
 
 function HeaderLoggedIn() {
   const { setLoggedIn, currentUser } = useContext(FullContext);
-  let gender;
+  const navigate = useNavigate();
 
   function signoutBtn() {
     setLoggedIn(false);
     localStorage.removeItem("userData");
+    navigate("/");
   }
 
   function changeIcon(e, d) {
@@ -26,6 +28,7 @@ function HeaderLoggedIn() {
   function displayTitle() {
     const splitName = currentUser.fullName.split(" ");
 
+    let gender;
     if (currentUser.gender === "male") gender = "Mr.";
     if (currentUser.gender === "female") gender = "Mrs.";
 

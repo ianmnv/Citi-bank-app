@@ -1,10 +1,12 @@
 import React, { useState, useContext } from "react";
+import { useNavigate } from "react-router-dom";
 
 import FullContext from "../FullContext";
 
 function HeaderLoggedOut() {
   const [username, setUserName] = useState("");
   const [password, setPass] = useState("");
+  const navigate = useNavigate();
 
   const { setLoggedIn, accounts } = useContext(FullContext);
 
@@ -16,6 +18,7 @@ function HeaderLoggedOut() {
     if (user && password === user.password) {
       setLoggedIn(true);
       localStorage.setItem("userData", JSON.stringify(user));
+      navigate("/");
     }
   }
 

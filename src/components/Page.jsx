@@ -1,7 +1,10 @@
-import React from "react";
+import React, { useEffect } from "react";
 
 function Page(props) {
-  document.title = `${props.title} | CITI BANK`;
+  useEffect(() => {
+    document.title = `${props.title} | CITI BANK`;
+  }, []);
+
   return <div className={props.className}>{props.children}</div>;
 }
 

@@ -118,7 +118,7 @@ header {
   display: flex;
   align-items: center;
   justify-content: space-evenly;
-  gap: 5rem;
+  gap: 3rem;
   padding: 5rem 0;
 }
 
@@ -133,7 +133,7 @@ header {
 #homeout-text {
   display: flex;
   align-items: center;
-  gap: 2rem;
+  gap: 3rem;
 }
 
 #homeout-inner-txt {
@@ -235,7 +235,7 @@ header {
   justify-content: center;
   align-items: center;
   gap: 2rem;
-  padding: 3rem;
+  padding: 5rem;
 }
 
 .homein-h1 {
@@ -247,6 +247,7 @@ header {
   font-size: 1.5rem;
   font-weight: 300;
   padding: 1rem;
+  text-align: center;
 }
 
 .homein-h2 {
@@ -254,14 +255,24 @@ header {
   font-weight: 400;
 }
 
+#homein-slider {
+  width: 40rem;
+  height: 30rem;
+  position: relative;
+}
+
+.slides {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
 /* FOOTER */
 .footer-cont {
   display: flex;
   justify-content: center;
   gap: 3rem;
-  margin-top: 3rem;
   padding: 1.5rem;
-
   background-color: var(--color--strong-1);
 }
 
@@ -315,5 +326,5 @@ header {
 }
 
 .reduce-content {
-  padding: 5rem 30rem;
+  padding: 6rem 30rem;
 }
