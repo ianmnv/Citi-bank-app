@@ -316,6 +316,38 @@ header {
   border: solid 1px var(--color--primary);
 }
 
+/* PERSONAL */
+.personal-cont {
+  display: flex;
+}
+
+#personal-aside {
+  height: 80vh;
+  width: 20rem;
+  margin: 1rem 2rem 4rem 15rem;
+  border-right: solid 1px var(--text--color);
+
+  display: flex;
+  flex-direction: column;
+}
+
+.personal-links {
+  font-size: 1rem;
+  padding: 1rem;
+  text-decoration: none;
+  color: var(--text--color);
+  border-top-left-radius: var(--border-rad);
+  border-bottom-left-radius: var(--border-rad);
+  border: solid 1px var(--color--primary);
+}
+
+.personal-links:hover {
+  background-color: var(--color--second);
+  border-top-left-radius: var(--border-rad);
+  border-bottom-left-radius: var(--border-rad);
+  text-decoration: underline;
+}
+
 /* FOOTER */
 .footer-cont {
   display: flex;
