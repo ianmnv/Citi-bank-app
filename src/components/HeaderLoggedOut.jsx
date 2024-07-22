@@ -19,6 +19,8 @@ function HeaderLoggedOut() {
       setLoggedIn(true);
       localStorage.setItem("userData", JSON.stringify(user));
       navigate("/");
+    } else {
+      alert("Profile not found, please try again.");
     }
   }
 

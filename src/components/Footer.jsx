@@ -1,11 +1,9 @@
 import React from "react";
 import { Link } from "react-router-dom";
 
-import Page from "./Page";
-
 function Footer() {
   return (
-    <Page className="footer-cont">
+    <div className="footer-cont">
       <Link to="/" className="footer-links">
         Home
       </Link>
@@ -18,7 +16,7 @@ function Footer() {
       <Link to="/terms&conditions" className="footer-links">
         Terms & Cond.
       </Link>
-    </Page>
+    </div>
   );
 }
 
