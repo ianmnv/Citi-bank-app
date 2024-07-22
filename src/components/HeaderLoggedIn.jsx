@@ -37,7 +37,10 @@ function HeaderLoggedIn() {
 
   return (
     <div id="header-in-cont">
-      <Link to="/personal" style={{ display: "flex", alignItems: "center" }}>
+      <Link
+        to={`/personal/${currentUser.username}/${currentUser.id.join("")}`}
+        style={{ display: "flex", alignItems: "center" }}
+      >
         <img
           src={currentUser.gender === "male" ? maleAvatar : femAvatar}
           alt="avatar"

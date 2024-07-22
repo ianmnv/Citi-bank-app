@@ -4,7 +4,20 @@ import Profile from "./Profile";
 import Money from "./Money";
 
 function PersonalInfo(props) {
-  return <>{props.component === "profile" ? <Profile /> : <Money />}</>;
+  switch (props.content) {
+    case "profile":
+      return (
+        <div className="personal-content">
+          <Profile />
+        </div>
+      );
+    case "money":
+      return (
+        <div className="personal-content">
+          <Money />
+        </div>
+      );
+  }
 }
 
 export default PersonalInfo;

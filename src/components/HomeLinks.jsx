@@ -1,15 +1,21 @@
-import React from "react";
+import React, { useContext } from "react";
 import { Link } from "react-router-dom";
 
 import Page from "./Page";
+import FullContext from "../FullContext";
 
 function HomeLinks() {
+  const { currentUser } = useContext(FullContext);
+
   return (
     <Page className="homein-link-cont">
       <Link to="/" className="homein-link">
         Home
       </Link>
-      <Link to="/personal" className="homein-link">
+      <Link
+        to={`/personal/${currentUser.username}/${currentUser.id.join("")}`}
+        className="homein-link"
+      >
         Personal
       </Link>
       <Link to="/creditcards" className="homein-link">

@@ -1,26 +1,47 @@
 import React, { useState, useEffect } from "react";
-import { Link } from "react-router-dom";
 
 import Page from "./Page";
 
 import PersonalInfo from "./PersonalInfo";
 
 function Personal() {
-  useEffect(() => window.scrollTo(0, 125), []);
   const [component, setComponent] = useState("profile");
+
+  useEffect(() => window.scrollTo(0, 125), []);
+
+  const changeContent = (e) => {
+    const allSiblings = e.target
+      .closest("#personal-aside")
+      .querySelectorAll(".personal-links");
+    allSiblings.forEach((link) => {
+      link.classList.remove("active-link");
+    });
+
+    e.target.classList.add("active-link");
+
+    setComponent(e.target.dataset.content);
+  };
 
   return (
     <Page title="Personal" className="personal-cont">
       <aside id="personal-aside">
-        <Link to={"/profile"} className="personal-links">
+        <button
+          onClick={changeContent}
+          data-content="profile"
+          className="personal-links active-link"
+        >
           Profile
-        </Link>
-        <Link to={"/movements"} className="personal-links">
+        </button>
+        <button
+          onClick={changeContent}
+          data-content="money"
+          className="personal-links"
+        >
           Your money
-        </Link>
+        </button>
       </aside>
 
-      <PersonalInfo component={component} setComponent={setComponent} />
+      <PersonalInfo content={component} />
     </Page>
   );
 }

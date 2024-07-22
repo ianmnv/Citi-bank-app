@@ -335,17 +335,43 @@ header {
   font-size: 1rem;
   padding: 1rem;
   text-decoration: none;
+  cursor: pointer;
+
   color: var(--text--color);
+  background-color: #fff;
+
   border-top-left-radius: var(--border-rad);
   border-bottom-left-radius: var(--border-rad);
-  border: solid 1px var(--color--primary);
+  border: none;
 }
 
-.personal-links:hover {
-  background-color: var(--color--second);
+.personal-links:hover,
+.active-link {
+  color: #fff;
+  background: linear-gradient(
+    to left,
+    var(--color--second),
+    var(--color--strong-2)
+  );
+
+  border: none;
+  border-right: 2px solid #000;
   border-top-left-radius: var(--border-rad);
   border-bottom-left-radius: var(--border-rad);
-  text-decoration: underline;
+}
+
+.personal-content {
+  width: 100%;
+  padding: 1rem 15rem 1rem 0;
+}
+
+#personal-h1-c {
+  border-bottom: solid 1px var(--text--color);
+}
+
+.personal-h1 {
+  font-size: 3rem;
+  font-weight: 400;
 }
 
 /* FOOTER */

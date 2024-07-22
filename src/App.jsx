@@ -13,12 +13,13 @@ import About from "./components/About";
 import FullContext from "./FullContext";
 
 import { useImmerReducer } from "use-immer";
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 
 function App() {
   const accounts = [
     {
+      id: [1, 2, 3, 4, 5, 6, 7, 8, 9],
       username: "ianmng",
       fullName: "Ian Nava",
       email: "ianmng@gmail.com",
@@ -29,6 +30,7 @@ function App() {
       movements: [920, 9000, 20000, -5000, -100, 10000, -450, -3400],
     },
     {
+      id: [1, 2, 3, 4, 5, 6, 7, 8, 9],
       username: "john117",
       fullName: "John Smith",
       email: "john117@gmail.com",
@@ -39,6 +41,7 @@ function App() {
       movements: [5000, -2000, 1000, 599, -355, 9000, -500, -210],
     },
     {
+      id: [1, 2, 3, 4, 5, 6, 7, 8, 9],
       username: "meganfox",
       fullName: "Megan Fox",
       email: "foxyM@gmail.com",
@@ -51,6 +54,7 @@ function App() {
   ];
 
   const initialValues = {
+    id: [1, 2, 3, 4, 5, 6, 7, 8, 9],
     username: "",
     fullName: "",
     email: "",
@@ -101,6 +105,12 @@ function App() {
   if (loggedIn) {
     const user = JSON.parse(localStorage.getItem("userData"));
     currentUser = user;
+
+    const createId = (num) => {
+      const random = Math.trunc(Math.random() * 9);
+      return num * random;
+    };
+    currentUser.id.forEach((el, i, arr) => (arr[i] = createId(el)));
   }
 
   return (
@@ -114,7 +124,7 @@ function App() {
 
         <Routes>
           <Route path="/" element={loggedIn ? <HomeIn /> : <HomeOut />} />
-          <Route path="/personal" element={<Personal />} />
+          <Route path="/personal/:username/:id" element={<Personal />} />
           <Route path="/contact" element={<Contact />} />
           <Route path="/about" element={<About />} />
           <Route path="/terms&conditions" element={<Terms />} />
