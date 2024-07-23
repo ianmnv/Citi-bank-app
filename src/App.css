@@ -365,13 +365,83 @@ header {
   padding: 1rem 15rem 1rem 0;
 }
 
-#personal-h1-c {
+.personal-h1-c {
   border-bottom: solid 1px var(--text--color);
 }
 
 .personal-h1 {
   font-size: 3rem;
   font-weight: 400;
+}
+
+/* MONEY COMPONENT */
+.personal-info-container {
+  margin: 3rem;
+  height: 70%;
+}
+
+#balance-c {
+  display: flex;
+  justify-content: center;
+  gap: 4rem;
+
+  margin-bottom: 4rem;
+  padding: 0.7rem;
+
+  border-radius: var(--border-rad);
+  background-color: #edf2fb;
+}
+
+.balance-i {
+  display: flex;
+  gap: 1rem;
+}
+
+.balance-t {
+  font-size: 1.5rem;
+  font-weight: 500;
+}
+
+#movement-titles-c {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  border-bottom: solid 3px;
+  margin-bottom: 0.5rem;
+}
+
+.move-title {
+  font-size: 2rem;
+}
+
+.total-b {
+  color: var(--color--primary);
+}
+
+.move-in {
+  color: #2b8a3e;
+}
+
+.move-out {
+  color: #c92a2a;
+}
+
+.movement-c {
+  padding-top: 1.5rem;
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  border-bottom: #000 solid 1px;
+}
+
+.move-amount {
+  font-weight: 500;
+}
+
+.move-info {
+  font-size: 1.5rem;
+}
+
+.description {
+  grid-column: 4 / 5;
 }
 
 /* FOOTER */

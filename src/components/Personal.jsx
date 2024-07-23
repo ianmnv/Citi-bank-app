@@ -37,7 +37,7 @@ function Personal() {
           data-content="money"
           className="personal-links"
         >
-          Your money
+          Movements
         </button>
       </aside>
 
