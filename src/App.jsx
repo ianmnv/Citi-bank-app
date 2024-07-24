@@ -13,7 +13,7 @@ import About from "./components/About";
 import FullContext from "./FullContext";
 
 import { useImmerReducer } from "use-immer";
-import React, { useState, useEffect } from "react";
+import React, { useState } from "react";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 
 function App() {
@@ -27,7 +27,17 @@ function App() {
       gender: "male",
       card: "student",
       creditCard: "",
-      movements: [920, 9000, 20000, -5000, -100, 10000, -450, -3400],
+      movements: [920.55, 9000, 20000, -5000, -100, 10000, -450, -3400],
+      descriptionMove: [
+        "Product sold",
+        "Paycheck",
+        "Product sold",
+        "Liverpool",
+        "KFC",
+        "Product sold",
+        "P.F. Changs",
+        "Bar Margaritas",
+      ],
     },
     {
       id: [1, 2, 3, 4, 5, 6, 7, 8, 9],
@@ -38,7 +48,17 @@ function App() {
       gender: "male",
       card: "saving",
       creditCard: "",
-      movements: [5000, -2000, 1000, 599, -355, 9000, -500, -210],
+      movements: [5000, -2000, 10000, 599, -355, 9000, -500, -210],
+      descriptionMove: [
+        "Army bonus",
+        "Gun Shop Tobby",
+        "UNSC paycheck",
+        "Product sold",
+        "Cheesecake Factory",
+        "UNSC paycheck",
+        "Gun Shop Tobby",
+        "Body Energy Club",
+      ],
     },
     {
       id: [1, 2, 3, 4, 5, 6, 7, 8, 9],
@@ -50,6 +70,17 @@ function App() {
       card: "checking",
       creditCard: "",
       movements: [20000, 4000, -2500, -6000, 1200, -899, -300, -890, 2000],
+      descriptionMove: [
+        "Paycheck",
+        "Hollywood bonus",
+        "Evelyn salon",
+        "Best Buy",
+        "Hollywood bonus",
+        "Spaguetti Factory",
+        "Starbucks",
+        "Apple Store",
+        "Hollywood bonus",
+      ],
     },
   ];
 
