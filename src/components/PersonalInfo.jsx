@@ -7,15 +7,15 @@ function PersonalInfo(props) {
   switch (props.content) {
     case "profile":
       return (
-        <div className="personal-content">
+        <article className="personal-content">
           <Profile />
-        </div>
+        </article>
       );
     case "money":
       return (
-        <div className="personal-content">
+        <article className="personal-content">
           <Money />
-        </div>
+        </article>
       );
   }
 }

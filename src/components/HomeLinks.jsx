@@ -1,14 +1,13 @@
 import React, { useContext } from "react";
 import { Link } from "react-router-dom";
 
-import Page from "./Page";
 import FullContext from "../FullContext";
 
 function HomeLinks() {
   const { currentUser } = useContext(FullContext);
 
   return (
-    <Page className="homein-link-cont">
+    <nav className="homein-link-cont">
       <Link to="/" className="homein-link">
         Home
       </Link>
@@ -30,7 +29,7 @@ function HomeLinks() {
       <Link to="/invest" className="homein-link">
         Invest
       </Link>
-    </Page>
+    </nav>
   );
 }
 

@@ -5,7 +5,7 @@ function Page(props) {
     document.title = `${props.title} | CITI BANK`;
   }, [props.title]);
 
-  return <div className={props.className}>{props.children}</div>;
+  return <main className={props.className}>{props.children}</main>;
 }
 
 export default Page;

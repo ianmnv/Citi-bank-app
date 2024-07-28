@@ -374,7 +374,7 @@ header {
   font-weight: 400;
 }
 
-/* MONEY COMPONENT */
+/* MONEY */
 .personal-info-container {
   margin: 3rem;
   height: 70%;
@@ -442,6 +442,12 @@ header {
 
 .description {
   grid-column: 4 / 5;
+}
+
+/* PROFILE */
+
+#profile-edit-c {
+  display: flex;
 }
 
 /* FOOTER */

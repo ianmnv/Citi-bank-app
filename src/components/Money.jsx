@@ -47,11 +47,11 @@ function Money() {
 
   return (
     <>
-      <div className="personal-h1-c">
+      <section className="personal-h1-c">
         <h1 className="personal-h1">YOUR MONEY</h1>
-      </div>
+      </section>
 
-      <div className="personal-info-container">
+      <main className="personal-info-container">
         <div id="balance-c">
           <div className="balance-i total-b">
             <p className="balance-t">Total balance:</p>
@@ -121,7 +121,7 @@ function Money() {
             </div>
           );
         })}
-      </div>
+      </main>
     </>
   );
 }
