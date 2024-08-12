@@ -99,7 +99,6 @@ function Money() {
         </div>
 
         {currentUser.movements.map((el, i) => {
-          console.log(currentUser.descriptionMove);
           return (
             <div className="movement-c" key={i}>
               <span className="move-info">{formatDates(dates[i])}</span>

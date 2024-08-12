@@ -447,7 +447,57 @@ header {
 /* PROFILE */
 
 #profile-edit-c {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  row-gap: 3rem;
+  padding: 5rem;
+}
+
+#profile-edit-btn {
+  grid-column: 2 / 3;
+  justify-self: end;
+  border: solid 0.1rem #b6adad;
+  border-radius: var(--border-rad);
+  cursor: pointer;
+  padding: 0.5rem 1rem;
+  background-color: #fff;
+  font-size: 1.3rem;
+}
+
+#profile-edit-btn:hover {
+  box-shadow: 1px 8px 15px #b6adad;
+  text-decoration: none;
+  border: solid 1px #fff;
+}
+
+.c-inp {
+  font-size: 1.5rem;
+}
+
+.p-e-inp {
+  border: solid 1px;
+  padding: 0.5rem 1rem;
+  font-size: 1.2rem;
+  font-weight: 400;
+  color: var(--color--primary);
+}
+
+.address {
   display: flex;
+  align-items: center;
+  gap: 0.3rem;
+
+  grid-column: 1 / -1;
+}
+
+#address {
+  resize: none;
+  overflow-y: hidden;
+  width: 100%;
+  height: 4rem;
+  padding: 0.5rem 1rem;
+  font-family: inherit;
+  font-size: 1.2rem;
 }
 
 /* FOOTER */
