@@ -8,12 +8,11 @@ import femAvatar from "../imgs/fem-avatar.png";
 import FullContext from "../FullContext";
 
 function HeaderLoggedIn() {
-  const { setLoggedIn, currentUser } = useContext(FullContext);
+  const { dispatch, currentUser } = useContext(FullContext);
   const navigate = useNavigate();
 
   function signoutBtn() {
-    setLoggedIn(false);
-    localStorage.removeItem("userData");
+    dispatch({ type: "sign-out" });
     navigate("/");
   }
 

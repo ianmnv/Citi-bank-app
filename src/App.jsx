@@ -35,6 +35,14 @@ function App() {
     card: "student",
     creditCard: "",
     movements: [],
+    signIn(data) {
+      setLoggedIn(true);
+      localStorage.setItem("userData", JSON.stringify(data));
+    },
+    signOut() {
+      setLoggedIn(false);
+      localStorage.removeItem("userData");
+    },
   };
 
   function reducerCallback(draft, action) {
@@ -60,8 +68,16 @@ function App() {
       case "creditCard":
         draft.card = action.value;
         break;
+      // Movements is not being used anywhere, except to display them in Money component
+      // But coming from the current user
       case "movements":
         draft.movements = draft.movements.push(action.value);
+        break;
+      case "sign-in":
+        draft.signIn(action.value);
+        break;
+      case "sign-out":
+        draft.signOut();
         break;
     }
   }

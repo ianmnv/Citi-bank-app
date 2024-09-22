@@ -11,7 +11,7 @@ function HeaderLoggedOut() {
   });
   const navigate = useNavigate();
 
-  const { setLoggedIn, users } = useContext(FullContext);
+  const { users, dispatch: appDispatch } = useContext(FullContext);
 
   function submitHandler(e) {
     e.preventDefault();
@@ -19,8 +19,7 @@ function HeaderLoggedOut() {
     const user = users.find((user) => state.username === user.username);
 
     if (user && state.password === user.password) {
-      setLoggedIn(true);
-      localStorage.setItem("userData", JSON.stringify(user));
+      appDispatch({ type: "sign-in", value: user });
       navigate("/");
     } else {
       alert("Profile not found, please try again.");

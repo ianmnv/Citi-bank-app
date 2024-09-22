@@ -1,4 +1,5 @@
 import React, { useContext } from "react";
+import { useNavigate } from "react-router-dom";
 
 import Page from "./Page";
 import projection from "../imgs/projection.png";
@@ -6,14 +7,15 @@ import projection from "../imgs/projection.png";
 import FullContext from "../FullContext";
 
 function HomeOut() {
-  const { setLoggedIn, state, dispatch, accounts } = useContext(FullContext);
+  const { state, dispatch } = useContext(FullContext);
+
+  const navigate = useNavigate();
 
   function handlerForm(e) {
     e.preventDefault();
 
-    setLoggedIn(true);
-    accounts.push(state);
-    localStorage.setItem("userData", JSON.stringify(state));
+    dispatch({ type: "sign-in", value: state });
+    navigate("/");
   }
 
   return (
