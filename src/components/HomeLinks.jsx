@@ -12,7 +12,7 @@ function HomeLinks() {
         Home
       </Link>
       <Link
-        to={`/personal/${currentUser.username}/${currentUser.id.join("")}`}
+        to={`/personal/${currentUser.username}/${currentUser.id}`}
         className="homein-link"
       >
         Personal

@@ -76,10 +76,10 @@ function App() {
     getData();
   }, []);
 
-  // if (loggedIn) {
-  //   const user = JSON.parse(localStorage.getItem("userData"));
-  //   currentUser = user;
-  // }
+  if (loggedIn) {
+    const user = JSON.parse(localStorage.getItem("userData"));
+    currentUser = user;
+  }
 
   return (
     <FullContext.Provider

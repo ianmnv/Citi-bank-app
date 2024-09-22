@@ -38,7 +38,7 @@ function HeaderLoggedIn() {
   return (
     <div id="header-in-cont">
       <Link
-        to={`/personal/${currentUser.username}/${currentUser.id.join("")}`}
+        to={`/personal/${currentUser.username}/${currentUser.id}`}
         style={{ display: "flex", alignItems: "center" }}
       >
         <img

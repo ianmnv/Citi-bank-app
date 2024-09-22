@@ -1,21 +1,24 @@
-import React, { useState, useContext } from "react";
+import React, { useContext } from "react";
 import { useNavigate } from "react-router-dom";
+import { useImmer } from "use-immer";
 
 import FullContext from "../FullContext";
 
 function HeaderLoggedOut() {
-  const [username, setUserName] = useState("");
-  const [password, setPass] = useState("");
+  const [state, dispatch] = useImmer({
+    username: "",
+    password: "",
+  });
   const navigate = useNavigate();
 
-  const { setLoggedIn, accounts } = useContext(FullContext);
+  const { setLoggedIn, users } = useContext(FullContext);
 
   function submitHandler(e) {
     e.preventDefault();
 
-    const user = accounts.find((account) => username === account.username);
+    const user = users.find((user) => state.username === user.username);
 
-    if (user && password === user.password) {
+    if (user && state.password === user.password) {
       setLoggedIn(true);
       localStorage.setItem("userData", JSON.stringify(user));
       navigate("/");
@@ -44,7 +47,11 @@ function HeaderLoggedOut() {
           </svg>
         </label>
         <input
-          onChange={(e) => setUserName(e.target.value)}
+          onChange={(e) =>
+            dispatch((draft) => {
+              draft.username = e.target.value;
+            })
+          }
           className="input-forms"
           type="text"
           placeholder="Username"
@@ -69,7 +76,11 @@ function HeaderLoggedOut() {
           </svg>
         </label>
         <input
-          onChange={(e) => setPass(e.target.value)}
+          onChange={(e) =>
+            dispatch((draft) => {
+              draft.password = e.target.value;
+            })
+          }
           className="input-forms"
           type="password"
           placeholder="Password"
