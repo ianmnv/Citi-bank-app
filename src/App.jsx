@@ -12,80 +12,21 @@ import About from "./components/About";
 
 import FullContext from "./FullContext";
 
+import { httpGetAllUsers } from "./hooks/requests";
+
 import { useImmerReducer } from "use-immer";
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 
 function App() {
-  const accounts = [
-    {
-      id: [1, 2, 3, 4, 5, 6, 7, 8, 9],
-      username: "ianmng",
-      fullName: "Ian Nava",
-      email: "ianmng@gmail.com",
-      password: "mybankpass",
-      gender: "male",
-      card: "student",
-      creditCard: "",
-      movements: [920.55, 9000, 20000, -5000, -100, 10000, -450, -3400],
-      descriptionMove: [
-        "Product sold",
-        "Paycheck",
-        "Product sold",
-        "Liverpool",
-        "KFC",
-        "Product sold",
-        "P.F. Changs",
-        "Bar Margaritas",
-      ],
-    },
-    {
-      id: [1, 2, 3, 4, 5, 6, 7, 8, 9],
-      username: "john117",
-      fullName: "John Smith",
-      email: "john117@gmail.com",
-      password: "masterchiefpass",
-      gender: "male",
-      card: "saving",
-      creditCard: "",
-      movements: [5000, -2000, 10000, 599, -355, 9000, -500, -210],
-      descriptionMove: [
-        "Army bonus",
-        "Gun Shop Tobby",
-        "UNSC paycheck",
-        "Product sold",
-        "Cheesecake Factory",
-        "UNSC paycheck",
-        "Gun Shop Tobby",
-        "Body Energy Club",
-      ],
-    },
-    {
-      id: [1, 2, 3, 4, 5, 6, 7, 8, 9],
-      username: "meganfox",
-      fullName: "Megan Fox",
-      email: "foxyM@gmail.com",
-      password: "meganfoxpass",
-      gender: "female",
-      card: "checking",
-      creditCard: "",
-      movements: [20000, 4000, -2500, -6000, 1200, -899, -300, -890, 2000],
-      descriptionMove: [
-        "Paycheck",
-        "Hollywood bonus",
-        "Evelyn salon",
-        "Best Buy",
-        "Hollywood bonus",
-        "Spaguetti Factory",
-        "Starbucks",
-        "Apple Store",
-        "Hollywood bonus",
-      ],
-    },
-  ];
+  let currentUser;
+  const [users, setUsers] = useState({});
+  const [loggedIn, setLoggedIn] = useState(
+    Boolean(localStorage.getItem("userData"))
+  );
 
   const initialValues = {
-    id: [1, 2, 3, 4, 5, 6, 7, 8, 9],
+    id: 0,
     username: "",
     fullName: "",
     email: "",
@@ -127,26 +68,29 @@ function App() {
 
   const [state, dispatch] = useImmerReducer(reducerCallback, initialValues);
 
-  const [loggedIn, setLoggedIn] = useState(
-    Boolean(localStorage.getItem("userData"))
-  );
+  useEffect(() => {
+    async function getData() {
+      const data = await httpGetAllUsers();
+      setUsers(data);
+    }
+    getData();
+  }, []);
 
-  let currentUser;
-
-  if (loggedIn) {
-    const user = JSON.parse(localStorage.getItem("userData"));
-    currentUser = user;
-
-    const createId = (num) => {
-      const random = Math.trunc(Math.random() * 9);
-      return num * random;
-    };
-    currentUser.id.forEach((el, i, arr) => (arr[i] = createId(el)));
-  }
+  // if (loggedIn) {
+  //   const user = JSON.parse(localStorage.getItem("userData"));
+  //   currentUser = user;
+  // }
 
   return (
     <FullContext.Provider
-      value={{ loggedIn, setLoggedIn, state, dispatch, accounts, currentUser }}
+      value={{
+        loggedIn,
+        setLoggedIn,
+        state,
+        dispatch,
+        currentUser,
+        users,
+      }}
     >
       <BrowserRouter>
         <Header />
