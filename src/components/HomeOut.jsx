@@ -3,6 +3,7 @@ import { useNavigate } from "react-router-dom";
 
 import Page from "./Page";
 import projection from "../imgs/projection.png";
+import { httpPostNewUser } from "../hooks/requests";
 
 import FullContext from "../FullContext";
 
@@ -11,11 +12,9 @@ function HomeOut() {
 
   const navigate = useNavigate();
 
-  function handlerForm(e) {
+  async function handlerForm(e) {
     e.preventDefault();
-
-    dispatch({ type: "sign-in", value: state });
-    navigate("/");
+    await httpPostNewUser(state, navigate, dispatch);
   }
 
   return (
@@ -26,19 +25,19 @@ function HomeOut() {
           <div id="homeout-inner-txt">
             <h1>Sign up today!</h1>
             <p id="homeout-p">
-              By singin up with us you'll have access to many advantages in our
-              products, services and cards! After singing up take a minute or 2
-              to really read all the benefits that our debit and cards provide
-              to you.
+              By signing up with us you'll have access to many advantages in our
+              products, services and cards! After signing up, it will take you a
+              minute or 2 to read all the benefits that our debit and credit
+              cards have.
               <br />
               Citi Bank is a brand new bank that will help you grow and
               understand your money, our advisors will happily help you with
               your everyday needs. And even though our bank is new, this doesn't
               mean we don't know what we are doing, all our staff have a lot of
               experience working in finance, economics and many more important
-              work, we have brought very experienced and proffesional personal
-              that you won't regret our services and products, we're proud of
-              who we are and we are sure you will love it too.
+              work, we have brought very experienced and proffesional staff that
+              you won't regret our services and products, we're proud of who we
+              are and we are sure you will love it too.
               <br />
               <br />
               Hope to see you soon!

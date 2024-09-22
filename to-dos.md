@@ -3,12 +3,12 @@
 -App (done)
 -HeaderLoggedIn (done)
 -HeaderLoggedOut (done)
--HomeOut
+-HomeOut (done)
 -Profile
 
 ## What to change:
 
-1. HeaderLoggedIn & Out, change the way to sign-in and out, example:
+1. HeaderLoggedIn & Out, change the way to sign-in and out, example: (done)
    👇 in header logged in
    setLoggedIn(true);
    localStorage.setItem("userData", JSON.stringify(user));
