@@ -449,6 +449,7 @@ header {
 #profile-edit-c {
   display: grid;
   grid-template-columns: 1fr 1fr;
+  align-items: center;
   row-gap: 3rem;
   padding: 5rem;
 }
@@ -475,11 +476,19 @@ header {
 }
 
 .p-e-inp {
-  border: solid 1px;
+  border: solid 1px var(--color--primary);
+  border-radius: var(--border-rad);
   padding: 0.5rem 1rem;
   font-size: 1.2rem;
   font-weight: 400;
   color: var(--color--primary);
+}
+
+.profile-gen-cont {
+  display: inline-flex;
+  gap: 1rem;
+  padding: 0 3rem;
+  font-size: 1.2rem;
 }
 
 .address {

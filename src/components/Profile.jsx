@@ -55,23 +55,26 @@ function Profile() {
         </div>
 
         <div className="c-inp">
-          <label htmlFor="gender">Gender:</label>{" "}
-          <input
-            type="text"
-            id="gender"
-            className="p-e-inp"
-            value={currentUser.gender}
-          />
+          <label htmlFor="gender">Gender:</label>
+
+          <div className="profile-gen-cont">
+            <label>
+              <input type="radio" name="gender" value="male" /> Male
+            </label>{" "}
+            <label>
+              <input type="radio" name="gender" value="female" /> Female
+            </label>
+          </div>
         </div>
 
         <div className="c-inp">
-          <label htmlFor="debit-card">Debit-card:</label>{" "}
-          <input
-            type="text"
-            id="debit-card"
-            className="p-e-inp"
-            value={currentUser.card}
-          />
+          <label htmlFor="cardType">Debit-card:</label>{" "}
+          
+          <select className="p-e-inp" name="cardType" id="cardType">
+            <option value="student">Student account</option>
+            <option value="checking">Checking account</option>
+            <option value="saving">Saving account</option>
+          </select>
         </div>
 
         <div className="c-inp address">

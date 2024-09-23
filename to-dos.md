@@ -5,6 +5,7 @@
 -HeaderLoggedOut (done)
 -HomeOut (done)
 -Profile
+-Money
 
 ## What to change:
 
