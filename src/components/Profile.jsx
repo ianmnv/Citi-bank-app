@@ -1,9 +1,22 @@
-import React, { useContext } from "react";
+import React, { useContext, useState } from "react";
+import { useParams } from "react-router-dom";
 
 import FullContext from "../FullContext";
 
 function Profile() {
-  const { currentUser } = useContext(FullContext);
+  const { currentUser, state, dispatch } = useContext(FullContext);
+  const [edit, setEdition] = useState(false);
+  const gender = currentUser.gender;
+  const cardType = currentUser.card;
+
+  function changeCallback(e, inputType) {
+    if (edit) {
+      // dispatch({ type: inputType, value: e.target.value });
+      // console.log(state);
+      currentUser[inputType] = e.target.value;
+      console.log(edit, currentUser);
+    }
+  }
 
   return (
     <>
@@ -12,7 +25,14 @@ function Profile() {
       </section>
 
       <main id="profile-edit-c">
-        <button id="profile-edit-btn">Edit info</button>
+        <button
+          id="profile-edit-btn"
+          onClick={() => {
+            setEdition(true);
+          }}
+        >
+          Edit info
+        </button>
 
         <div className="c-inp">
           <label htmlFor="username">username:</label>{" "}
@@ -21,6 +41,7 @@ function Profile() {
             id="username"
             className="p-e-inp"
             value={currentUser.username}
+            onChange={(e) => changeCallback(e, "username")}
           />
         </div>
 
@@ -31,6 +52,7 @@ function Profile() {
             id="fullname"
             className="p-e-inp"
             value={currentUser.fullName}
+            onChange={(e) => changeCallback(e, "fullName")}
           />
         </div>
 
@@ -41,6 +63,7 @@ function Profile() {
             id="email"
             className="p-e-inp"
             value={currentUser.email}
+            onChange={(e) => changeCallback(e, "email")}
           />
         </div>
 
@@ -51,6 +74,7 @@ function Profile() {
             id="password"
             className="p-e-inp"
             value={currentUser.password}
+            onChange={(e) => changeCallback(e, "password")}
           />
         </div>
 
@@ -59,27 +83,55 @@ function Profile() {
 
           <div className="profile-gen-cont">
             <label>
-              <input type="radio" name="gender" value="male" /> Male
+              <input
+                checked={gender === "male"}
+                type="radio"
+                name="gender"
+                value="male"
+                onChange={(e) => changeCallback(e, "gender")}
+              />{" "}
+              Male
             </label>{" "}
             <label>
-              <input type="radio" name="gender" value="female" /> Female
+              <input
+                checked={gender === "female"}
+                type="radio"
+                name="gender"
+                value="female"
+                onChange={(e) => changeCallback(e, "gender")}
+              />{" "}
+              Female
             </label>
           </div>
         </div>
 
         <div className="c-inp">
           <label htmlFor="cardType">Debit-card:</label>{" "}
-          
-          <select className="p-e-inp" name="cardType" id="cardType">
-            <option value="student">Student account</option>
-            <option value="checking">Checking account</option>
-            <option value="saving">Saving account</option>
+          <select
+            className="p-e-inp"
+            name="cardType"
+            id="cardType"
+            onChange={(e) => changeCallback(e, "card")}
+          >
+            <option value="student" selected={cardType === "student"}>
+              Student account
+            </option>
+            <option value="checking" selected={cardType === "checking"}>
+              Checking account
+            </option>
+            <option value="saving" selected={cardType === "saving"}>
+              Saving account
+            </option>
           </select>
         </div>
 
         <div className="c-inp address">
           <label htmlFor="address">Address:</label>{" "}
-          <textarea name="address" id="address"></textarea>
+          <textarea
+            name="address"
+            id="address"
+            onChange={(e) => changeCallback(e, "address")}
+          ></textarea>
         </div>
       </main>
     </>

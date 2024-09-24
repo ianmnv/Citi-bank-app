@@ -34,6 +34,7 @@ function App() {
     gender: "male",
     card: "student",
     creditCard: "",
+    address: "",
     movements: [],
     signIn(data) {
       setLoggedIn(true);
@@ -67,6 +68,9 @@ function App() {
         break;
       case "creditCard":
         draft.card = action.value;
+        break;
+      case "address":
+        draft.address = action.value;
         break;
       // Movements is not being used anywhere, except to display them in Money component
       // But coming from the current user

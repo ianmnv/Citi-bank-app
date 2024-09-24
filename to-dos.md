@@ -1,18 +1,21 @@
 # Needs an update in files:
 
--App (done)
--HeaderLoggedIn (done)
--HeaderLoggedOut (done)
--HomeOut (done)
--Profile
--Money
+- Profile: Able to edit user's info
+- HomeOut: Create validation if fields are empty & new function that calls dispatch in this new function
+- Money: Not display all movements and change functionality in case user doesn't have movements at all
+- HeaderLogOut: Get user by fetching it instead of getting it from the users vaiable
+- App: Don't get all users when component first displayed
 
-## What to change:
+## What needs to change:
 
-1. HeaderLoggedIn & Out, change the way to sign-in and out, example: (done)
-   👇 in header logged in
-   setLoggedIn(true);
-   localStorage.setItem("userData", JSON.stringify(user));
-   navigate("/");
+- currentUser: Get current user from useParams(id). Needs to replace this on Profile, HeaderLogIn, HomeLinks, Money and App components.
 
-   Create a dispatch using 'useImmer' or another 'useImmerReducer' to only call this funciton in both components
+/////////////////////////////////////////////// DONE
+
+- HeaderLoggedIn & Out, change the way to sign-in and out, example:
+  👇 in header logged in
+  setLoggedIn(true);
+  localStorage.setItem("userData", JSON.stringify(user));
+  navigate("/");
+
+  Create a dispatch using 'useImmer' or another 'useImmerReducer' to only call this funciton in both components
