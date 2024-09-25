@@ -12,30 +12,30 @@ import About from "./components/About";
 
 import FullContext from "./FullContext";
 
-import { httpGetAllUsers } from "./hooks/requests";
+// No longer needs the function below, currenUser, users, setUsers
 
 import { useImmerReducer } from "use-immer";
 import React, { useState, useEffect } from "react";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 
 function App() {
-  let currentUser;
-  const [users, setUsers] = useState({});
   const [loggedIn, setLoggedIn] = useState(
     Boolean(localStorage.getItem("userData"))
   );
 
   const initialValues = {
-    id: 0,
-    username: "",
-    fullName: "",
-    email: "",
-    password: "",
-    gender: "male",
-    card: "student",
-    creditCard: "",
-    address: "",
-    movements: [],
+    user: {
+      id: 0,
+      username: "",
+      fullName: "",
+      email: "",
+      password: "",
+      gender: "male",
+      card: "student",
+      creditCard: "",
+      address: "",
+      movements: [],
+    },
     signIn(data) {
       setLoggedIn(true);
       localStorage.setItem("userData", JSON.stringify(data));
@@ -48,34 +48,37 @@ function App() {
 
   function reducerCallback(draft, action) {
     switch (action.type) {
+      case "userData":
+        draft.user = action.value;
+        break;
       case "username":
-        draft.username = action.value;
+        draft.user.username = action.value;
         break;
       case "fullName":
-        draft.fullName = action.value;
+        draft.user.fullName = action.value;
         break;
       case "email":
-        draft.email = action.value;
+        draft.user.email = action.value;
         break;
       case "password":
-        draft.password = action.value;
+        draft.user.password = action.value;
         break;
       case "gender":
-        draft.gender = action.value;
+        draft.user.gender = action.value;
         break;
       case "card":
-        draft.card = action.value;
+        draft.user.card = action.value;
         break;
       case "creditCard":
-        draft.card = action.value;
+        draft.user.card = action.value;
         break;
       case "address":
-        draft.address = action.value;
+        draft.user.address = action.value;
         break;
       // Movements is not being used anywhere, except to display them in Money component
       // But coming from the current user
       case "movements":
-        draft.movements = draft.movements.push(action.value);
+        draft.user.movements = draft.movements.push(action.value);
         break;
       case "sign-in":
         draft.signIn(action.value);
@@ -89,17 +92,13 @@ function App() {
   const [state, dispatch] = useImmerReducer(reducerCallback, initialValues);
 
   useEffect(() => {
-    async function getData() {
-      const data = await httpGetAllUsers();
-      setUsers(data);
+    if (loggedIn) {
+      dispatch({
+        type: "userData",
+        value: JSON.parse(localStorage.getItem("userData")),
+      });
     }
-    getData();
-  }, []);
-
-  if (loggedIn) {
-    const user = JSON.parse(localStorage.getItem("userData"));
-    currentUser = user;
-  }
+  }, [loggedIn]);
 
   return (
     <FullContext.Provider
@@ -108,8 +107,6 @@ function App() {
         setLoggedIn,
         state,
         dispatch,
-        currentUser,
-        users,
       }}
     >
       <BrowserRouter>

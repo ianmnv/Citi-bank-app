@@ -1,20 +1,15 @@
 import React, { useContext, useState } from "react";
-import { useParams } from "react-router-dom";
 
 import FullContext from "../FullContext";
 
 function Profile() {
-  const { currentUser, state, dispatch } = useContext(FullContext);
+  const { state, dispatch } = useContext(FullContext);
   const [edit, setEdition] = useState(false);
-  const gender = currentUser.gender;
-  const cardType = currentUser.card;
+  const gender = state.user.gender;
+  const cardType = state.user.card;
 
   function changeCallback(e, inputType) {
     if (edit) {
-      // dispatch({ type: inputType, value: e.target.value });
-      // console.log(state);
-      currentUser[inputType] = e.target.value;
-      console.log(edit, currentUser);
     }
   }
 
@@ -40,7 +35,7 @@ function Profile() {
             type="text"
             id="username"
             className="p-e-inp"
-            value={currentUser.username}
+            value={state.user.username}
             onChange={(e) => changeCallback(e, "username")}
           />
         </div>
@@ -51,7 +46,7 @@ function Profile() {
             type="text"
             id="fullname"
             className="p-e-inp"
-            value={currentUser.fullName}
+            value={state.user.fullName}
             onChange={(e) => changeCallback(e, "fullName")}
           />
         </div>
@@ -62,7 +57,7 @@ function Profile() {
             type="text"
             id="email"
             className="p-e-inp"
-            value={currentUser.email}
+            value={state.user.email}
             onChange={(e) => changeCallback(e, "email")}
           />
         </div>
@@ -73,7 +68,7 @@ function Profile() {
             type="password"
             id="password"
             className="p-e-inp"
-            value={currentUser.password}
+            value={state.user.password}
             onChange={(e) => changeCallback(e, "password")}
           />
         </div>

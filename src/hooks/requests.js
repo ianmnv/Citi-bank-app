@@ -1,9 +1,9 @@
 import axios from "axios";
 axios.defaults.baseURL = "http://localhost:9000";
 
-async function httpGetUser(id) {
+async function httpGetUser(username) {
   try {
-    const response = await axios.get(`/users/${id}`);
+    const response = await axios.get(`/users/${username}`);
     return response.data;
   } catch (error) {
     console.error(error);

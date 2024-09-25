@@ -3,7 +3,7 @@ import React, { useContext, useEffect, useState } from "react";
 import FullContext from "../FullContext";
 
 function Money() {
-  const { currentUser } = useContext(FullContext);
+  const { state } = useContext(FullContext);
   const [dates, setDates] = useState([]);
 
   function formatDates(date) {
@@ -39,7 +39,7 @@ function Money() {
   }
 
   useEffect(() => {
-    const datesArr = createDates(currentUser.movements.length).sort(
+    const datesArr = createDates(state.user.movements.length).sort(
       (a, b) => b - a
     );
     setDates(datesArr);
@@ -58,7 +58,7 @@ function Money() {
             <p className="balance-t">
               <strong>
                 {formatNumber(
-                  currentUser.movements.reduce((acc, move) => acc + move, 0)
+                  state.user.movements.reduce((acc, move) => acc + move, 0)
                 )}
               </strong>
             </p>
@@ -69,7 +69,7 @@ function Money() {
             <p className="balance-t">
               <strong>
                 {formatNumber(
-                  currentUser.movements
+                  state.user.movements
                     .filter((move) => move > 0)
                     .reduce((acc, move) => acc + move, 0)
                 )}
@@ -82,7 +82,7 @@ function Money() {
             <p className="balance-t">
               <strong>
                 {formatNumber(
-                  currentUser.movements
+                  state.user.movements
                     .filter((move) => move < 0)
                     .reduce((acc, move) => acc + move, 0)
                 )}
@@ -98,7 +98,7 @@ function Money() {
           <p className="move-title ">Concept</p>
         </div>
 
-        {currentUser.movements.map((el, i) => {
+        {state.user.movements.map((el, i) => {
           return (
             <div className="movement-c" key={i}>
               <span className="move-info">{formatDates(dates[i])}</span>
@@ -115,7 +115,7 @@ function Money() {
                   : `-${formatNumber(Math.abs(el))}`}
               </span>
               <span className="move-info description">
-                {currentUser.descriptionMove[i]}
+                {state.user.descriptionMove[i]}
               </span>
             </div>
           );

@@ -1,14 +1,16 @@
 # Needs an update in files:
 
 - Profile: Able to edit user's info
-- HomeOut: Create validation if fields are empty & new function that calls dispatch in this new function
+- HomeOut: Create validation if fields are empty, new function that calls dispatch in this new function and change the way it passes the state to the http function
 - Money: Not display all movements and change functionality in case user doesn't have movements at all
-- HeaderLogOut: Get user by fetching it instead of getting it from the users vaiable
-- App: Don't get all users when component first displayed
+- HeaderLogOut: Get user by fetching it instead of getting it from the users vaiable (done)
+- App: Don't get all users when component first displayed (done)
 
 ## What needs to change:
 
-- currentUser: Get current user from useParams(id). Needs to replace this on Profile, HeaderLogIn, HomeLinks, Money and App components.
+/////////////////////////////////////////////// DONE
+
+- currentUser: Get current user from useParams(id) or from appState (state). Needs to replace this on Profile, HeaderLogIn, HomeLinks, Money and App components.
 
 /////////////////////////////////////////////// DONE
 

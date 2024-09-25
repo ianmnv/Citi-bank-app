@@ -3,6 +3,7 @@ import { useNavigate } from "react-router-dom";
 import { useImmer } from "use-immer";
 
 import FullContext from "../FullContext";
+import { httpGetUser } from "../hooks/requests";
 
 function HeaderLoggedOut() {
   const [state, dispatch] = useImmer({
@@ -11,12 +12,13 @@ function HeaderLoggedOut() {
   });
   const navigate = useNavigate();
 
-  const { users, dispatch: appDispatch } = useContext(FullContext);
+  const { dispatch: appDispatch } = useContext(FullContext);
 
-  function submitHandler(e) {
+  async function submitHandler(e) {
     e.preventDefault();
 
-    const user = users.find((user) => state.username === user.username);
+    const user = await httpGetUser(state.username);
+    console.log(user);
 
     if (user && state.password === user.password) {
       appDispatch({ type: "sign-in", value: user });

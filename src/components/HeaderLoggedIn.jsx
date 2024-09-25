@@ -8,7 +8,7 @@ import femAvatar from "../imgs/fem-avatar.png";
 import FullContext from "../FullContext";
 
 function HeaderLoggedIn() {
-  const { dispatch, currentUser } = useContext(FullContext);
+  const { state, dispatch } = useContext(FullContext);
   const navigate = useNavigate();
 
   function signoutBtn() {
@@ -25,11 +25,11 @@ function HeaderLoggedIn() {
   }
 
   function displayTitle() {
-    const splitName = currentUser.fullName.split(" ");
+    const splitName = state.user.fullName.split(" ");
 
     let gender;
-    if (currentUser.gender === "male") gender = "Mr.";
-    if (currentUser.gender === "female") gender = "Mrs.";
+    if (state.user.gender === "male") gender = "Mr.";
+    if (state.user.gender === "female") gender = "Mrs.";
 
     return `Hello ${gender} ${splitName[0]}`;
   }
@@ -37,11 +37,11 @@ function HeaderLoggedIn() {
   return (
     <div id="header-in-cont">
       <Link
-        to={`/personal/${currentUser.username}/${currentUser.id}`}
+        to={`/personal/${state.user.username}/${state.user.id}`}
         style={{ display: "flex", alignItems: "center" }}
       >
         <img
-          src={currentUser.gender === "male" ? maleAvatar : femAvatar}
+          src={state.user.gender === "male" ? maleAvatar : femAvatar}
           alt="avatar"
           className="header-loggedin-avatar"
         />
