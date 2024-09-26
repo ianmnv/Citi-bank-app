@@ -38,4 +38,15 @@ async function httpPostNewUser(state, navigate, dispatch) {
   }
 }
 
-export { httpGetUser, httpGetAllUsers, httpPostNewUser };
+async function httpPutNewData(data, id, navigate) {
+  try {
+    await axios.put(`/users/${id}`, data);
+    navigate(`/`);
+    alert("Information updated");
+  } catch (error) {
+    console.error(error);
+    return { error: error };
+  }
+}
+
+export { httpGetUser, httpGetAllUsers, httpPostNewUser, httpPutNewData };

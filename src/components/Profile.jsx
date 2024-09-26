@@ -2,10 +2,12 @@ import React, { useContext, useState } from "react";
 import { useNavigate } from "react-router-dom";
 
 import FullContext from "../FullContext";
+import { httpPutNewData } from "../hooks/requests";
 
 function Profile() {
   const { state, dispatch } = useContext(FullContext);
   const [edit, setEdition] = useState(true);
+  const [infoChanged, setInfoChanged] = useState(0);
   const gender = state.user.gender;
   const cardType = state.user.card;
   const navigate = useNavigate();
@@ -13,6 +15,7 @@ function Profile() {
   function changeCallback(e, inputType) {
     if (!edit) {
       dispatch({ type: inputType, value: e.target.value });
+      setInfoChanged(+1);
     }
   }
 
@@ -22,11 +25,9 @@ function Profile() {
       document
         .querySelectorAll(".p-edit-state")
         .forEach((el) => el.classList.remove("p-edit-state"));
-    } else {
+    } else if (infoChanged) {
       setEdition(true);
-      // Request goes here
-      navigate(`/`);
-      alert("Information updated");
+      await httpPutNewData(state.user, state.user.id, navigate);
     }
   }
 

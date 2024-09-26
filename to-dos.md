@@ -1,8 +1,8 @@
 # Needs an update in files:
 
-- Profile: Able to edit user's info
 - HomeOut: Create validation if fields are empty, new function that calls dispatch in this new function and change the way it passes the state to the http function
 - Money: Not display all movements and change functionality in case user doesn't have movements at all
+- Profile: Able to edit user's info (done)
 - HeaderLogOut: Get user by fetching it instead of getting it from the users vaiable (done)
 - App: Don't get all users when component first displayed (done)
 

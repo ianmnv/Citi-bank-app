@@ -18,7 +18,6 @@ function HeaderLoggedOut() {
     e.preventDefault();
 
     const user = await httpGetUser(state.username);
-    console.log(user);
 
     if (user && state.password === user.password) {
       appDispatch({ type: "sign-in", value: user });
