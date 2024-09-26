@@ -484,6 +484,10 @@ header {
   color: var(--color--primary);
 }
 
+.p-edit-state {
+  opacity: 0.5;
+}
+
 .profile-gen-cont {
   display: inline-flex;
   gap: 1rem;
