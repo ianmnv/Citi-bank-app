@@ -14,7 +14,19 @@ function HomeOut() {
 
   async function handlerForm(e) {
     e.preventDefault();
-    await httpPostNewUser(state, navigate, dispatch);
+    const user = state.user;
+    if (
+      user.username &&
+      user.fullName &&
+      user.email &&
+      user.password &&
+      user.gender &&
+      user.card
+    ) {
+      await httpPostNewUser(user, navigate, dispatch);
+    } else {
+      alert("Please fill out all inputs.");
+    }
   }
 
   return (

@@ -19,15 +19,15 @@ async function httpGetAllUsers() {
   }
 }
 
-async function httpPostNewUser(state, navigate, dispatch) {
+async function httpPostNewUser(user, navigate, dispatch) {
   try {
     const request = await axios.post("/users", {
-      username: state.username,
-      fullName: state.fullName,
-      email: state.email,
-      password: state.password,
-      gender: state.gender,
-      card: state.card,
+      username: user.username,
+      fullName: user.fullName,
+      email: user.email,
+      password: user.password,
+      gender: user.gender,
+      card: user.card,
     });
     dispatch({ type: "sign-in", value: request.data });
     navigate("/");
